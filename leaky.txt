@@ -1,0 +1,28 @@
+#include<iostream>
+#include <graphics.h>
+using namespace std;
+int main(){
+	int n,ic,og,store=0,bs;
+
+	cout<<"Enter Bucket size, Outgoing rate, No. of inputs and             incoming size : ";
+	cin>>bs>>og>>n>>ic;
+	cout<<endl;
+
+	while(n!=0){
+		cout<<"incoming size is : "<<ic;
+		if(ic<=(bs-store)){
+			store+=ic;
+			cout<<"\nbucket buffer size is "<<store<<" out of "<<bs;
+		}
+		else{
+			cout<<"\npacket loss "<<ic-(bs-store);
+			store=bs;
+            cout<<"\nbucket buffer size is "<<store<<" out of "<<bs;
+		}
+		store-=og;
+		cout<<"\nafter out going "<<store<<" packets left out of "<<bs<<" in buffer"<<endl<<endl<<endl;
+		n--;
+
+	}
+	return 0;
+}
